@@ -16,8 +16,6 @@ namespace ProyectoCalculadora
         //https://i.pinimg.com/originals/62/0f/ea/620fea3a0644cea4b3599374aeb72255.jpg
         //tamaño anterior : 280; 421
 
-        //Hay que arreglar el manejo de porcentajes
-
         private ManejoInterfaz manInt = new ManejoInterfaz();
         private Calculadora calc = new Calculadora();
         public Form1()
@@ -201,16 +199,6 @@ namespace ProyectoCalculadora
 
         }
 
-        private void button30_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button31_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button32_Click(object sender, EventArgs e)
         {
 
@@ -227,11 +215,6 @@ namespace ProyectoCalculadora
         }
 
         private void button35_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button36_Click(object sender, EventArgs e)
         {
 
         }
@@ -426,11 +409,6 @@ namespace ProyectoCalculadora
 
         }
 
-        private void button65_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button66_Click(object sender, EventArgs e)
         {
 
@@ -587,6 +565,29 @@ namespace ProyectoCalculadora
         private void button16_Click(object sender, EventArgs e)
         {
             manInt.Calcular('%');
+        }
+
+        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label1.Text);
+        }
+
+        private void pegarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Double.TryParse(Clipboard.GetText(), out double result);
+            label1.Text = result.ToString();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if((e.KeyChar == '.') && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

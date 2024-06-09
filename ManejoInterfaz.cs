@@ -38,12 +38,11 @@ namespace ProyectoCalculadora
                     //Si, manejar una conversión tan jodida como la de abajo es todo menos recomendable, pero
                     //No queria mover mucho lo que ya llevaba, así que, esto fue lo que terminé haciendo
                     //string aux = f.label1.Text;
-                    double porc;
                     try
                     {
                         string aux = f.label1.Text;
-                        porc = Convert.ToDouble(f.label1.Text) / 100;
-                        if (f.label2.Text[0] == '+' || f.label2.Text[0] == '-') f.label1.Text = calc.Operador(f.label3.Text, f.label2.Text[0], Convert.ToString(Convert.ToDouble(f.label1.Text) * porc));
+                        double porc = Convert.ToDouble(f.label1.Text) / 100;
+                        if (f.label2.Text[0] == '+' || f.label2.Text[0] == '-') f.label1.Text = calc.Operador(f.label3.Text, f.label2.Text[0], Convert.ToString(Convert.ToDouble(f.label3.Text) * porc));
                         else f.label1.Text = calc.Operador(f.label3.Text, f.label2.Text[0], Convert.ToString(porc));
                         f.label3.Text = f.label3.Text + f.label2.Text + aux + "%="; f.label2.Text = " ";
                     }
@@ -122,6 +121,7 @@ namespace ProyectoCalculadora
             CambioColor(f.panel5);
             CambioColor(f.panel6);
             CambioColor(f.panel7);
+            CambioColor(f.panel8);
             CambioColor(f.menuStrip1);
         }
 
@@ -130,7 +130,7 @@ namespace ProyectoCalculadora
             f.panel8.Visible = EstaActiva;
             if (EstaActiva)
             {
-                f.panel8.Location = new Point(panelActual.Width + 1, 27);
+                f.panel8.Location = new Point(panelActual.Width + 1, 24);
                 f.Size = new Size(panelActual.Width + f.panel8.Width, panelActual.Height + 54);
             }
             else
