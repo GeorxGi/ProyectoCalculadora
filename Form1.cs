@@ -104,7 +104,10 @@ namespace ProyectoCalculadora
 
         private void sobreLaCalculadoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Calculadora creada por: Georges Chakour\ncomo parte de un pequeño proyecto\npara la materia Lenguajes de Programación", "Información");
+            if(MessageBox.Show("Calculadora creada por: Georges Chakour\ncomo parte de un pequeño proyecto\npara la materia Lenguajes de Programación\n\n¿Abrir repositorio de GitHub?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://github.com/GeorxGi/ProyectoCalculadora");
+            }
         }
 
         private void verAyudaToolStripMenuItem_Click(object sender, EventArgs e)
